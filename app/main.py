@@ -3,7 +3,7 @@ import os
 import requests
 import dotenv
 
-form server import server_thread
+from server import server_thread
 
 dotenv.load_dotenv()
 
