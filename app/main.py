@@ -7,7 +7,7 @@ from server import server_thread
 
 dotenv.load_dotenv()
 
-TOKEN = os.environ.get("TOKEN")
+TOKEN = os.getenv("TOKEN")
 
 class MyClient(discord.Client):
     async def on_ready(self):
