@@ -28,17 +28,24 @@ class MyClient(discord.Client):
             try:
                 url = f"https://api.mcsrvstat.us/bedrock/2/unix.f5.si:25720"
 
-                responce = requests.get(url)
-                data = responce.json()
+                response = requests.get(url)
+                data = response.json()
                 if data['online']:
                     await message.channel.send(f"{data['players']['online']} / 100")
                 else:
                     await message.channel.send("The server is offline")
             except Exception as e:
-                    await message.channel.send(f"Error: {e}")
+                await message.channel.send(f"Error: {e}")
 
+# Intents を設定
 intents = discord.Intents.default()
 intents.message_content = True
 
+# MyClient のインスタンスを作成（← ここが重要！）
+client = MyClient(intents=intents)
+
+# サーバースレッドを開始
 server_thread()
+
+# Bot を実行
 client.run(TOKEN)
