@@ -1,6 +1,7 @@
 import discord
 import os
 import requests
+import dotenv
 
 form server import server_thread
 
