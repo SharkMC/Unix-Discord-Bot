@@ -1,7 +1,6 @@
 import discord
 import os
-from dotenv import load_dotenv
-load_dotenv()
+import requests
 
 class MyClient(discord.Client):
     async def on_ready(self):
@@ -12,11 +11,24 @@ class MyClient(discord.Client):
         if message.author == self.user:
             return
 
-        if message.content == '$Hello':
-            await message.channel.send('Hello!')
+        if message.content == '!info':
+            await message.channel.send('Discord: https://discord.gg/zns7VZteC2')
+
+        elif message.content == '!staff':
+            await message.channel.send('-------« Staff Member »-------\nShqrkMC - Founder, Owner, Dev\neozah - Owner, Dev\nUran3007 - Manager, Builder\nx Ramuneee - Admin, Builder\nYuk1yQwQ - Admin\n--------------------------------')
+
+        elif message.content == '!status':
+            try:
+                url = f"https://api.mcsrvstat.us/bedrock/2/unix.f5.si:25720"
+
+                responce = requests.get(url)
+                data = responce.json()
+                if data['online']:
+                    await message.channel.send(f"{data['players']['online']} / 100")
+                else:
+                    await message.channel.send("The server is offline")
+            except Exception as e:
+                    await message.channel.send(f"Error: {e}")
 
 intents = discord.Intents.default()
 intents.message_content = True
-
-client = MyClient(intents=intents)
-client.run(os.getenv('TOKEN'))
