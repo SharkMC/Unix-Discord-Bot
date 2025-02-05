@@ -34,7 +34,7 @@ class MyClient(discord.Client):
         await interaction.response.send_message('-------« Staff Member »-------\nShqrkMC - Founder, Owner, Dev\neozah - Owner, Dev\nUran3007 - Manager, Builder\nx Ramuneee - Admin, Builder\nYuk1yQwQ - Admin\n--------------------------------')
 
     @tree.command(name='status', description='Show server status')
-    async def info(interaction: discord.Interaction):
+    async def status(interaction: discord.Interaction):
         try:
             url = f"https://api.mcsrvstat.us/bedrock/2/unix.f5.si:25720"
             response = requests.get(url)
