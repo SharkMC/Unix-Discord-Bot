@@ -36,15 +36,12 @@ async def info(interaction: discord.Interaction):
 
 @tree.command(name='staff', description='Show staff members')
 async def staff(interaction: discord.Interaction):
-    await interaction.response.send_message(
-        '-------« Staff Member »-------\n'
-        'ShqrkMC - Founder, Owner, Dev\n'
-        'eozah - Owner, Dev\n'
-        'Uran3007 - Manager, Builder\n'
-        'x Ramuneee - Admin, Builder\n'
-        'Yuk1yQwQ - Admin\n'
-        '--------------------------------'
+    embed = discord.Embed(
+        title="Staff",
+        description="-------« Staff Member »-------\nShqrkMC - Founder, Owner, Dev\neozah - Owner, Dev\nUran3007 - Manager, Builder\nx Ramuneee - Admin, Builder\nYuk1yQwQ - Admin\n--------------------------------",
+        color=discord.Color.blue()
     )
+    await interaction.response.send_message(embed=embed)
 
 @tree.command(name='status', description='Show server status')
 async def status(interaction: discord.Interaction):
