@@ -55,8 +55,8 @@ async def status(interaction: discord.Interaction):
                 color=discord.Color.blue
             )
             embed.add_field(name="Players", value="{data['players']['online']} / 100", inline=false)
-            embed.add_field(name="Server Address", value="IP: unix.f5.si\nPort: 25720)
-            embed.add_field(name="Version", value="1.21.50)
+            embed.add_field(name="Server Address", value="IP: unix.f5.si\nPort: 25720")
+            embed.add_field(name="Version", value="1.21.50")
 
             await interaction.response.send_message(embed=embed)
         else:
