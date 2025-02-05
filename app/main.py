@@ -28,8 +28,8 @@ async def on_ready():
 @tree.command(name='info', description='Show server information')
 async def info(interaction: discord.Interaction):
     embed = discord.Embed(
-        title="Information",
-        description="Discord: https://discord.gg/zns7VZteC2",
+        title="**Information**",
+        description="**Discord: https://discord.gg/zns7VZteC2**",
         color=discord.Color.blue()  # 修正: () を追加
     )
     await interaction.response.send_message(embed=embed)
@@ -60,20 +60,22 @@ async def status(interaction: discord.Interaction):
         
         if data['online']:
             embed = discord.Embed(
-                title="🟢 ONLINE",
+                title="**🟢 ONLINE**",
                 color=discord.Color.blue()  # 修正: () を追加
             )
-            embed.add_field(name="Players", value=f"{data['players']['online']} / 100", inline=False)  # 修正: f"" を追加
-            embed.add_field(name="Server Address", value="IP: unix.f5.si\nPort: 25720", inline=False)
-            embed.add_field(name="Version", value="1.21.50", inline=False)
+            embed.set_footer(icon_url="https://cdn.discordapp.com/attachments/1232460820034621483/1336660604760621127/70_4EDCD21.png?ex=67a49db2&is=67a34c32&hm=9519a88f37a73456ee8e6e627ecd0939d7a1ef03028429698cc607c32a484ecc&")
+            embed.add_field(name="__**Players**__", value=f"**{data['players']['online']} / 100**\n", inline=False)  # 修正: f"" を追加
+            embed.add_field(name="__**Server Address**__", value="**IP: unix.f5.si\nPort: 25720**\n", inline=False)
+            embed.add_field(name="__**Version**__", value="**1.21.50**", inline=False)
 
             await interaction.response.send_message(embed=embed)
         else:
             embed = discord.Embed(
-                title="🔴 OFFLINE",
-                description="Server is offline.",
+                title="**🔴 OFFLINE**",
+                description="**Server is offline.**",
                 color=discord.Color.blue()  # 修正: () を追加
             )
+            embed.set_footer(icon_url="https://cdn.discordapp.com/attachments/1232460820034621483/1336660604760621127/70_4EDCD21.png?ex=67a49db2&is=67a34c32&hm=9519a88f37a73456ee8e6e627ecd0939d7a1ef03028429698cc607c32a484ecc&")
             await interaction.response.send_message(embed=embed)
     except Exception as e:
         await interaction.response.send_message(f"Error: {e}")
