@@ -50,7 +50,15 @@ async def status(interaction: discord.Interaction):
         response = requests.get(url)
         data = response.json()
         if data['online']:
-            await interaction.response.send_message(f"{data['players']['online']} / 100")
+            embed = discord.Embed(
+                title="🟢 ONLINE",
+                color=discord.Color.blue
+            )
+            embed.add_field(name="Players", value="{data['players']['online']} / 100", inline=false)
+            embed.add_field(name="Server Address", value="IP: unix.f5.si\nPort: 25720)
+            embed.add_field(name="Version", value="1.21.50)
+
+            await interaction.response.send_message(embed=embed)
         else:
             embed = discord.Embed(
                 title="🔴 OFFLINE",
