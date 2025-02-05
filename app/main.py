@@ -69,8 +69,8 @@ async def status(interaction: discord.Interaction):
             )
             embed.set_author(name="Unix")  # 上部の名前
             embed.set_thumbnail(url=server_logo)  # 右上の画像
-            embed.add_field(name="__**Players**__", value=f"**{data['players']['online']} / 100**\n\n", inline=False)
-            embed.add_field(name="__**Server Address**__", value="**IP:** unix.f5.si\n**Port:** 25720\n\n", inline=False)
+            embed.add_field(name="__**Players**__", value=f"**{data['players']['online']} / 100**\n\n\n", inline=False)
+            embed.add_field(name="__**Server Address**__", value="**IP:** unix.f5.si\n**Port:** 25720\n\n\n", inline=False)
             embed.add_field(name="__**Version**__", value="**1.21.50**", inline=False)
             embed.set_footer(text="unix.f5.si")
 
@@ -81,6 +81,8 @@ async def status(interaction: discord.Interaction):
                 description="**Server is offline.**",
                 color=discord.Color.blue()  # 赤色のライン
             )
+
+            embed.set_author(name="Unix")  # 上部の名前
             embed.set_thumbnail(url=server_logo)  # 右上の画像
             embed.set_footer(text="unix.f5.si")
 
