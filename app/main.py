@@ -72,4 +72,23 @@ async def status(interaction: discord.Interaction):
             embed.add_field(name="__**Server Address**__", value="**IP: unix.f5.si\nPort: 25720**\n", inline=False)
             embed.add_field(name="__**Version**__", value="**1.21.50**", inline=False)
 
-            await interaction.response.send_message(embed
+            await interaction.response.send_message(embed=embed)
+        else:
+            embed = discord.Embed(
+                title="**🔴 OFFLINE**",
+                description="**Server is offline.**",
+                color=discord.Color.blue()
+            )
+            embed.set_image(url=logo_url)  # 右上にロゴを配置
+            await interaction.response.send_message(embed=embed)
+    except Exception as e:
+        await interaction.response.send_message(f"Error: {e}")
+
+# サーバースレッドを開始
+server_thread()
+
+# Bot を実行
+if TOKEN:
+    client.run(TOKEN)
+else:
+    print("Error: TOKEN is not set! Check your environment variables.")
