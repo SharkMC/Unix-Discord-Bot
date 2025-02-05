@@ -60,26 +60,30 @@ async def status(interaction: discord.Interaction):
         response = requests.get(url)
         data = response.json()
 
-        logo_url = "https://cdn.discordapp.com/attachments/1232460820034621483/1336660604760621127/70_4EDCD21.png"
+        server_logo = "https://cdn.discordapp.com/attachments/1232460820034621483/1336660604760621127/70_4EDCD21.png"
 
         if data['online']:
             embed = discord.Embed(
-                title="**🟢 ONLINE**",
-                color=discord.Color.blue()
+                title="🟢 **ONLINE**",
+                color=discord.Color.blue()  # 緑色のライン
             )
-            embed.set_image(url=logo_url)  # 右上にロゴを配置
-            embed.add_field(name="__**Players**__", value=f"**{data['players']['online']} / 100**\n", inline=False)
-            embed.add_field(name="__**Server Address**__", value="**IP: unix.f5.si\nPort: 25720**\n", inline=False)
+            embed.set_author(name="Unix")  # 上部の名前
+            embed.set_thumbnail(url=server_logo)  # 右上の画像
+            embed.add_field(name="__**Players**__", value=f"**{data['players']['online']} / 100**", inline=False)
+            embed.add_field(name="__**Server Address**__", value="**IP:** `unix.f5.si`\n**Port:** `25720`", inline=False)
             embed.add_field(name="__**Version**__", value="**1.21.50**", inline=False)
+            embed.set_footer(text="unix.f5.si")
 
             await interaction.response.send_message(embed=embed)
         else:
             embed = discord.Embed(
-                title="**🔴 OFFLINE**",
+                title="🔴 **OFFLINE**",
                 description="**Server is offline.**",
-                color=discord.Color.blue()
+                color=discord.Color.blue()  # 赤色のライン
             )
-            embed.set_image(url=logo_url)  # 右上にロゴを配置
+            embed.set_thumbnail(url=server_logo)  # 右上の画像
+            embed.set_footer(text="unix.f5.si")
+
             await interaction.response.send_message(embed=embed)
     except Exception as e:
         await interaction.response.send_message(f"Error: {e}")
