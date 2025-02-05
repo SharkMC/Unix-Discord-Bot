@@ -52,7 +52,12 @@ async def status(interaction: discord.Interaction):
         if data['online']:
             await interaction.response.send_message(f"{data['players']['online']} / 100")
         else:
-            await interaction.response.send_message("The server is offline")
+            embed = discord.Embed(
+                title="🔴 OFFLINE",
+                description="Server is offline.",
+                color=discord.Color.blue
+            )
+            await interaction.response.send_message(embed=embed)
     except Exception as e:
         await interaction.response.send_message(f"Error: {e}")
 
