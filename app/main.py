@@ -28,8 +28,8 @@ async def on_ready():
 @tree.command(name='info', description='Show server information')
 async def info(interaction: discord.Interaction):
     embed = discord.Embed(
-        title="Information"
-        description="Discord: https://discord.gg/zns7VZteC2"
+        title="Information",
+        description="Discord: https://discord.gg/zns7VZteC2",
         color=discord.Color.blue()
     )
     await interaction.response.send_message(embed=embed)
