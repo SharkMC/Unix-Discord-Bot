@@ -30,7 +30,7 @@ async def info(interaction: discord.Interaction):
     embed = discord.Embed(
         title="Information",
         description="Discord: https://discord.gg/zns7VZteC2",
-        color=discord.Color.blue()
+        color=discord.Color.blue()  # 修正: () を追加
     )
     await interaction.response.send_message(embed=embed)
 
@@ -38,8 +38,16 @@ async def info(interaction: discord.Interaction):
 async def staff(interaction: discord.Interaction):
     embed = discord.Embed(
         title="Staff",
-        description="-------« Staff Member »-------\nShqrkMC - Founder, Owner, Dev\neozah - Owner, Dev\nUran3007 - Manager, Builder\nx Ramuneee - Admin, Builder\nYuk1yQwQ - Admin\n--------------------------------",
-        color=discord.Color.blue()
+        description=(
+            "-------« Staff Member »-------\n"
+            "ShqrkMC - Founder, Owner, Dev\n"
+            "eozah - Owner, Dev\n"
+            "Uran3007 - Manager, Builder\n"
+            "x Ramuneee - Admin, Builder\n"
+            "Yuk1yQwQ - Admin\n"
+            "--------------------------------"
+        ),
+        color=discord.Color.blue()  # 修正: () を追加
     )
     await interaction.response.send_message(embed=embed)
 
@@ -49,21 +57,22 @@ async def status(interaction: discord.Interaction):
         url = "https://api.mcsrvstat.us/bedrock/2/unix.f5.si:25720"
         response = requests.get(url)
         data = response.json()
+        
         if data['online']:
             embed = discord.Embed(
                 title="🟢 ONLINE",
-                color=discord.Color.blue()
+                color=discord.Color.blue()  # 修正: () を追加
             )
-            embed.add_field(name="Players", value="f{data['players']['online']} / 100", inline=false)
-            embed.add_field(name="Server Address", value="IP: unix.f5.si\nPort: 25720")
-            embed.add_field(name="Version", value="1.21.50")
+            embed.add_field(name="Players", value=f"{data['players']['online']} / 100", inline=False)  # 修正: f"" を追加
+            embed.add_field(name="Server Address", value="IP: unix.f5.si\nPort: 25720", inline=False)
+            embed.add_field(name="Version", value="1.21.50", inline=False)
 
             await interaction.response.send_message(embed=embed)
         else:
             embed = discord.Embed(
                 title="🔴 OFFLINE",
                 description="Server is offline.",
-                color=discord.Color.blue
+                color=discord.Color.blue()  # 修正: () を追加
             )
             await interaction.response.send_message(embed=embed)
     except Exception as e:
