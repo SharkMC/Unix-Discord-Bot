@@ -30,8 +30,9 @@ async def info(interaction: discord.Interaction):
     embed = discord.Embed(
         title="**Information**",
         description="**Discord: https://discord.gg/zns7VZteC2**",
-        color=discord.Color.blue()  # 修正: () を追加
+        color=discord.Color.blue()
     )
+    embed.set_image(url="https://example.com/logo.png")  # 右上にロゴを表示
     await interaction.response.send_message(embed=embed)
 
 @tree.command(name='staff', description='Show staff members')
@@ -47,8 +48,9 @@ async def staff(interaction: discord.Interaction):
             "Yuk1yQwQ - Admin\n"
             "--------------------------------"
         ),
-        color=discord.Color.blue()  # 修正: () を追加
+        color=discord.Color.blue()
     )
+    embed.set_image(url="https://example.com/logo.png")  # 右上にロゴを表示
     await interaction.response.send_message(embed=embed)
 
 @tree.command(name='status', description='Show server status')
@@ -57,34 +59,17 @@ async def status(interaction: discord.Interaction):
         url = "https://api.mcsrvstat.us/bedrock/2/unix.f5.si:25720"
         response = requests.get(url)
         data = response.json()
-        
+
+        logo_url = "https://cdn.discordapp.com/attachments/1232460820034621483/1336660604760621127/70_4EDCD21.png"
+
         if data['online']:
             embed = discord.Embed(
                 title="**🟢 ONLINE**",
-                color=discord.Color.blue()  # 修正: () を追加
+                color=discord.Color.blue()
             )
-            embed.set_footer(icon_url="https://cdn.discordapp.com/attachments/1232460820034621483/1336660604760621127/70_4EDCD21.png?ex=67a49db2&is=67a34c32&hm=9519a88f37a73456ee8e6e627ecd0939d7a1ef03028429698cc607c32a484ecc&")
-            embed.add_field(name="__**Players**__", value=f"**{data['players']['online']} / 100**\n", inline=False)  # 修正: f"" を追加
+            embed.set_image(url=logo_url)  # 右上にロゴを配置
+            embed.add_field(name="__**Players**__", value=f"**{data['players']['online']} / 100**\n", inline=False)
             embed.add_field(name="__**Server Address**__", value="**IP: unix.f5.si\nPort: 25720**\n", inline=False)
             embed.add_field(name="__**Version**__", value="**1.21.50**", inline=False)
 
-            await interaction.response.send_message(embed=embed)
-        else:
-            embed = discord.Embed(
-                title="**🔴 OFFLINE**",
-                description="**Server is offline.**",
-                color=discord.Color.blue()  # 修正: () を追加
-            )
-            embed.set_footer(icon_url="https://cdn.discordapp.com/attachments/1232460820034621483/1336660604760621127/70_4EDCD21.png?ex=67a49db2&is=67a34c32&hm=9519a88f37a73456ee8e6e627ecd0939d7a1ef03028429698cc607c32a484ecc&")
-            await interaction.response.send_message(embed=embed)
-    except Exception as e:
-        await interaction.response.send_message(f"Error: {e}")
-
-# サーバースレッドを開始
-server_thread()
-
-# Bot を実行
-if TOKEN:
-    client.run(TOKEN)
-else:
-    print("Error: TOKEN is not set! Check your environment variables.")
+            await interaction.response.send_message(embed
