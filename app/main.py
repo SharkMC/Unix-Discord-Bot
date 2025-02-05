@@ -27,7 +27,12 @@ async def on_ready():
 
 @tree.command(name='info', description='Show server information')
 async def info(interaction: discord.Interaction):
-    await interaction.response.send_message('Discord: https://discord.gg/zns7VZteC2')
+    embed = discord.Embed(
+        title="Information"
+        description="Discord: https://discord.gg/zns7VZteC2"
+        color=discord.Color.blue()
+    )
+    await interaction.response.send_message(embed=embed)
 
 @tree.command(name='staff', description='Show staff members')
 async def staff(interaction: discord.Interaction):
