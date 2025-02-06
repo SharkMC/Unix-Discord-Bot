@@ -59,6 +59,21 @@ async def staff(interaction: discord.Interaction):
     embed.set_footer(text=ip)
     await interaction.response.send_message(embed=embed)
 
+@tree.command(name='rule', description='Send rule')
+@app_commands.describe(channel="Please select a channel", message="Please enter the rule")
+@app_commands.checks.has_permissions(manage_messages=True)
+async def rule(interaction: discord.Interaction, channel: discord.TextChannel, message: str):
+    embed = discord.Embed(
+        title="**Rule**",
+        description=message,
+        color=discord.Color.blue()
+    )
+    embed.set_author(name=server_name)
+    embed.set_thumbnail(url=url_logo)
+    embed.set_footer(text=ip)
+    await channel.send(embed=embed)
+    await interaction.response.send_message(f"Sent message to {channel.mention}", ephemeral=True)
+
 @tree.command(name='status', description='Show server status')
 async def status(interaction: discord.Interaction):
     try:
