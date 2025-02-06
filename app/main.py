@@ -62,7 +62,7 @@ async def staff(interaction: discord.Interaction):
 @tree.command(name='send', description='Send message')
 @app_commands.describe(channel="Please select a channel", title="Please enter the title", message="Please enter the message")
 @app_commands.checks.has_permissions(manage_messages=True)
-async def rule(interaction: discord.Interaction, channel: discord.TextChannel, message: str):
+async def message(interaction: discord.Interaction, channel: discord.TextChannel, title: str, message: str):
     embed = discord.Embed(
         title=title,
         description=message,
