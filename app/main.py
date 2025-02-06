@@ -73,9 +73,9 @@ async def status(interaction: discord.Interaction):
             )
             embed.set_author(name=server_name)
             embed.set_thumbnail(url=url_logo)
-            embed.add_field(name="__**Players**__", value=f"**{data['players']['online']} / 100**\n\n\n", inline=False)
+            embed.add_field(name="__**Players**__", value=f"**{data['players']['online']} / {data['players']['max']}**\n\n\n", inline=False)
             embed.add_field(name="__**Server Address**__", value=f"**IP:** {ip}\n**Port:** {port}\n\n\n", inline=False)
-            embed.add_field(name="__**Version**__", value="**1.21.50**", inline=False)
+            embed.add_field(name="__**Version**__", value=f"**{data['version']}**", inline=False)
             embed.set_footer(text=ip)
 
             await interaction.response.send_message(embed=embed)
