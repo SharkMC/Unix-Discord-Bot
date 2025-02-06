@@ -17,7 +17,7 @@ tree = app_commands.CommandTree(client)
 
 url_discord = 'https://discord.gg/zns7VZteC2'
 url_logo = 'https://cdn.discordapp.com/attachments/1232460820034621483/1336660604760621127/70_4EDCD21.png'
-ip = 'unix.f5.si
+ip = 'unix.f5.si'
 port = '25720'
 server_name = 'Unix'
 
