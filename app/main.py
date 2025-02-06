@@ -59,12 +59,12 @@ async def staff(interaction: discord.Interaction):
     embed.set_footer(text=ip)
     await interaction.response.send_message(embed=embed)
 
-@tree.command(name='rule', description='Send rule')
-@app_commands.describe(channel="Please select a channel", message="Please enter the rule")
+@tree.command(name='send', description='Send message')
+@app_commands.describe(channel="Please select a channel", title="Please enter the title", message="Please enter the message")
 @app_commands.checks.has_permissions(manage_messages=True)
 async def rule(interaction: discord.Interaction, channel: discord.TextChannel, message: str):
     embed = discord.Embed(
-        title="**Rule**",
+        title=title,
         description=message,
         color=discord.Color.blue()
     )
